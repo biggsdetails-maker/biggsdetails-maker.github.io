@@ -1,6 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DX9HDBV8N2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DX9HDBV8N2');
+</script>
+<script>
+  document.addEventListener('click', function (e) {
+    try {
+      if (typeof gtag !== 'function') return;
+      var el = e.target;
+      while (el && el.nodeType === 1) {
+        if (el.tagName === 'A') {
+          var href = el.getAttribute('href') || '';
+          if (href.indexOf('tel:') === 0) gtag('event', 'click_call', {transport_type: 'beacon'});
+          else if (href.indexOf('sms:') === 0) gtag('event', 'click_text', {transport_type: 'beacon'});
+          else if (href === '#/contact') gtag('event', 'click_quote', {transport_type: 'beacon'});
+          return;
+        }
+        if (el.tagName === 'BUTTON' && el.getAttribute('type') === 'submit' && el.form && el.form.id === 'quoteForm') {
+          gtag('event', 'click_quote', {transport_type: 'beacon'});
+          return;
+        }
+        el = el.parentNode;
+      }
+    } catch (err) {}
+  });
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Big G&#39;s Detailing — interior and exterior auto detailing in Norfolk, Nebraska. We come to you. Cars, trucks, boats, semis and more. Open Mon–Sun, 6am–10pm. Free quotes. Call or text (719) 568-1275.">
